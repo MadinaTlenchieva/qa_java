@@ -5,22 +5,13 @@ import java.util.List;
 <span class="fc" id="L5">public class Feline extends Animal implements Predator {</span>
 
     @Override
-    public List&lt;String&gt; eatMeat() throws Exception {
-<span class="fc" id="L9">        return getFood(&quot;Хищник&quot;);</span>
+    public List&lt;String&gt; getFood(String animalKind) throws Exception {
+<span class="fc" id="L9">        return super.getFood(animalKind);</span>
     }
 
     @Override
-    public String getFamily() {
-<span class="fc" id="L14">        return &quot;Кошачьи&quot;;</span>
-    }
-
     public int getKittens() {
-<span class="fc" id="L18">        return getKittens(1);</span>
+<span class="fc" id="L14">        return 1;</span>
     }
-
-    public int getKittens(int kittensCount) {
-<span class="fc" id="L22">        return kittensCount;</span>
-    }
-
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

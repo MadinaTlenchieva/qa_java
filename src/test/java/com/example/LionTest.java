@@ -14,24 +14,24 @@ import static org.mockito.Mockito.*;
 class LionTest {
 
     @Mock
-    Feline feline;
+    Predator predator;
 
     @Test
-    void getFoodReturnsMeat() throws Exception {
-        when(feline.eatMeat()).thenReturn(List.of("Животные"));
+    void getFoodReturnsPredatorFood() throws Exception {
+        when(predator.getFood("Хищник")).thenReturn(List.of("Животные"));
 
-        Lion lion = new Lion("Самец", feline);
+        Lion lion = new Lion("Самец", predator);
 
         assertEquals(List.of("Животные"), lion.getFood());
 
-        verify(feline).eatMeat();
+        verify(predator).getFood("Хищник");
     }
 
     @Test
-    void getKittensReturnsValueFromFeline() throws Exception {
-        when(feline.getKittens()).thenReturn(3);
+    void getKittensReturnsValueFromPredator() throws Exception {
+        when(predator.getKittens()).thenReturn(3);
 
-        Lion lion = new Lion("Самка", feline);
+        Lion lion = new Lion("Самка", predator);
 
         assertEquals(3, lion.getKittens());
     }
@@ -39,7 +39,7 @@ class LionTest {
     @Test
     void constructorThrowsExceptionWhenSexInvalid() {
         assertThrows(Exception.class, () ->
-                new Lion("Неизвестно", feline)
+                new Lion("Неизвестно", predator)
         );
     }
 }

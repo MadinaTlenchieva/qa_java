@@ -13,14 +13,12 @@ class AnimalTest {
     @Test
     void getFoodReturnsHerbivoreFood() throws Exception {
         List<String> food = animal.getFood("Травоядное");
-
         assertEquals(List.of("Трава", "Различные растения"), food);
     }
 
     @Test
     void getFoodReturnsPredatorFood() throws Exception {
         List<String> food = animal.getFood("Хищник");
-
         assertEquals(List.of("Животные", "Птицы", "Рыба"), food);
     }
 

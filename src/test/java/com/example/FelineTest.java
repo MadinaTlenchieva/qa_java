@@ -11,19 +11,38 @@ class FelineTest {
     Feline feline = new Feline();
 
     @Test
-    void eatMeatReturnsPredatorFood() throws Exception {
-        List<String> food = feline.eatMeat();
+    void getFoodReturnsPredatorFood() throws Exception {
+        List<String> food = feline.getFood("Хищник");
 
         assertEquals(List.of("Животные", "Птицы", "Рыба"), food);
     }
 
     @Test
-    void getFamilyReturnsFelineFamily() {
-        assertEquals("Кошачьи", feline.getFamily());
+    void getFoodReturnsHerbivoreFood() throws Exception {
+        List<String> food = feline.getFood("Травоядное");
+
+        assertEquals(List.of("Трава", "Различные растения"), food);
     }
 
     @Test
-    void getKittensWithoutParamsReturnsOne() {
+    void getFoodThrowsExceptionWhenUnknownType() {
+        Exception exception = assertThrows(Exception.class, () ->
+                feline.getFood("Неизвестно")
+        );
+
+        assertEquals(
+                "Неизвестный вид животного, используйте значение Травоядное или Хищник",
+                exception.getMessage()
+        );
+    }
+
+    @Test
+    void getFamilyContainsFelineFamily() {
+        assertTrue(feline.getFamily().contains("кошачьи"));
+    }
+
+    @Test
+    void getKittensReturnsOne() {
         assertEquals(1, feline.getKittens());
     }
 }

@@ -1,17 +1,15 @@
 package com.example;
 
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class FelineParameterizedTest {
+class ParameterizedFelineTest {
 
     Feline feline = new Feline();
 
-    @ParameterizedTest
-    @ValueSource(ints = {0, 1, 3, 10})
-    void getKittensWithParamReturnsCorrectValue(int kittensCount) {
-        assertEquals(kittensCount, feline.getKittens(kittensCount));
+    @Test
+    void getKittensReturnsOne() {
+        assertEquals(1, feline.getKittens());
     }
 }
