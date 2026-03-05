@@ -1,4 +1,13 @@
-package PACKAGE_NAME;
+import com.example.Feline;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ParameterizedFelineTest {
+class ParameterizedFelineTest {
+
+    Feline feline = new Feline();
+
+    @Test
+    void getKittensReturnsOne() {
+        assertEquals(1, feline.getKittens());
+    }
 }
