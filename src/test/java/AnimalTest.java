@@ -2,6 +2,7 @@ import com.example.Animal;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.Arguments;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -19,13 +20,13 @@ class AnimalTest {
         assertEquals(expectedFood, food);
     }
 
-    static Stream<org.junit.jupiter.params.provider.Arguments> foodProvider() {
+    static Stream<Arguments> foodProvider() {
         return Stream.of(
-                org.junit.jupiter.params.provider.Arguments.of(
+                Arguments.of(
                         "Травоядное",
                         List.of("Трава", "Различные растения")
                 ),
-                org.junit.jupiter.params.provider.Arguments.of(
+                Arguments.of(
                         "Хищник",
                         List.of("Животные", "Птицы", "Рыба")
                 )
@@ -46,6 +47,7 @@ class AnimalTest {
 
     @Test
     void getFamilyReturnsCorrectString() {
-        assertTrue(animal.getFamily().contains("кошачьи"));
+        String family = animal.getFamily();
+        assertTrue(family.contains("кошачьи"));
     }
 }
