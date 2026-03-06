@@ -1,23 +1,35 @@
 import com.example.Animal;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.List;
+import java.util.stream.Stream;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class AnimalTest {
 
     Animal animal = new Animal();
 
-    @Test
-    void getFoodReturnsHerbivoreFood() throws Exception {
-        List<String> food = animal.getFood("Травоядное");
-        assertEquals(List.of("Трава", "Различные растения"), food);
+    @ParameterizedTest
+    @MethodSource("foodProvider")
+    void getFoodReturnsCorrectFood(String animalType, List<String> expectedFood) throws Exception {
+        List<String> food = animal.getFood(animalType);
+        assertEquals(expectedFood, food);
     }
 
-    @Test
-    void getFoodReturnsPredatorFood() throws Exception {
-        List<String> food = animal.getFood("Хищник");
-        assertEquals(List.of("Животные", "Птицы", "Рыба"), food);
+    static Stream<org.junit.jupiter.params.provider.Arguments> foodProvider() {
+        return Stream.of(
+                org.junit.jupiter.params.provider.Arguments.of(
+                        "Травоядное",
+                        List.of("Трава", "Различные растения")
+                ),
+                org.junit.jupiter.params.provider.Arguments.of(
+                        "Хищник",
+                        List.of("Животные", "Птицы", "Рыба")
+                )
+        );
     }
 
     @Test

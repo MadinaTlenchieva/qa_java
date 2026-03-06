@@ -2,7 +2,7 @@ import com.example.Feline;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class ParameterizedFelineTest {
+class FelineParameterizedTest {
 
     Feline feline = new Feline();
 

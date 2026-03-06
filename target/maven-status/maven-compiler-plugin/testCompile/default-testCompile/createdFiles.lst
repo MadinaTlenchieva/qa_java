@@ -1,6 +1,6 @@
 CatTest.class
 AlexTest.class
-ParameterizedFelineTest.class
+FelineParameterizedTest.class
 AnimalTest.class
 LionParameterizedTest.class
 FelineTest.class

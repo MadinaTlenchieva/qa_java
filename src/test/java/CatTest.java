@@ -27,11 +27,13 @@ class CatTest {
 
     @Test
     void getFoodReturnsPredatorFood() throws Exception {
-        when(predator.getFood("Хищник")).thenReturn(List.of("Животные"));
+        List<String> expectedFood = List.of("Животные");
+
+        when(predator.getFood("Хищник")).thenReturn(expectedFood);
 
         Cat cat = new Cat(predator);
 
-        assertEquals(List.of("Животные"), cat.getFood());
+        assertEquals(expectedFood, cat.getFood());
 
         verify(predator).getFood("Хищник");
     }
