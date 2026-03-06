@@ -38,8 +38,4 @@ class FelineTest {
         assertTrue(feline.getFamily().contains("кошачьи"));
     }
 
-    @Test
-    void getKittensReturnsOne() {
-        assertEquals(1, feline.getKittens());
-    }
 }

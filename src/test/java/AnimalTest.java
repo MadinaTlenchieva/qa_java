@@ -17,6 +17,8 @@ class AnimalTest {
     @MethodSource("foodProvider")
     void getFoodReturnsCorrectFood(String animalType, List<String> expectedFood) throws Exception {
         List<String> food = animal.getFood(animalType);
+
+        assertNotNull(food);
         assertEquals(expectedFood, food);
     }
 
@@ -47,7 +49,9 @@ class AnimalTest {
 
     @Test
     void getFamilyReturnsCorrectString() {
-        String family = animal.getFamily();
-        assertTrue(family.contains("кошачьи"));
+        assertEquals(
+                "Существует несколько семейств: заячьи, беличьи, мышиные, кошачьи, псовые, медвежьи, куньи",
+                animal.getFamily()
+        );
     }
 }
